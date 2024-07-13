@@ -1,0 +1,127 @@
+1. Explain the difference between Selenium IDE, Selenium WebDriver, and Selenium Grid
+Selenium IDE:
+Definition: Selenium Integrated Development Environment (IDE) is a browser extension that allows testers to record, edit, and debug tests.
+Features:
+Record-and-playback tool.
+Supports basic scripting with no need for programming skills.
+Best suited for simple test cases and prototyping.
+Usage: Primarily used for creating quick and simple automated test scripts.
+Selenium WebDriver:
+Definition: Selenium WebDriver is a programming interface that allows you to create and execute test scripts to control web browsers.
+Features:
+Supports multiple programming languages (Java, C#, Python, etc.).
+Provides a more robust and flexible approach compared to Selenium IDE.
+Can handle dynamic web pages and complex user interactions.
+Usage: Used for creating advanced and detailed test scripts for web applications.
+Selenium Grid:
+Definition: Selenium Grid is a tool used to run parallel tests across different browsers, operating systems, and machines.
+Features:
+Supports distributed test execution.
+Allows testing on multiple browser versions and platforms simultaneously.
+Helps in reducing the test execution time.
+Usage: Used for cross-browser and cross-platform testing, especially in CI/CD pipelines.
+
+2. Write a Selenium script in Java to open Google and search for "Selenium Browser Driver."
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class GoogleSearch {
+    public static void main(String[] args) {
+        // Set the path of the ChromeDriver executable
+        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+
+        // Initialize a new ChromeDriver session
+        WebDriver driver = new ChromeDriver();
+
+        try {
+            // Open Google
+            driver.get("https://www.google.com");
+
+            // Find the search box
+            WebElement searchBox = driver.findElement(By.name("q"));
+
+            // Enter the search query
+            searchBox.sendKeys("Selenium Browser Driver");
+
+            // Submit the search query
+            searchBox.submit();
+
+            // Wait for the results to load
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            // Close the browser
+            driver.quit();
+        }
+    }
+}
+
+3. What is Selenium? How is it useful in Automation Testing?
+Selenium:
+Definition: Selenium is an open-source framework for automating web browsers. It provides tools for writing test scripts that simulate user interactions with web applications.
+Components:
+Selenium IDE
+Selenium WebDriver
+Selenium Grid
+Usage in Automation Testing:
+Cross-Browser Testing: Ensures that web applications work consistently across different browsers.
+Regression Testing: Automates repetitive test cases, ensuring new changes don’t break existing functionality.
+Continuous Integration: Integrates with CI/CD tools to automate testing in the software development pipeline.
+Enhanced Coverage: Covers more test scenarios in less time compared to manual testing.
+Error Detection: Identifies bugs early in the development process, reducing the cost and effort of fixing them.
+
+4. What are all Browser drivers used in Selenium?
+Browser Drivers:
+ChromeDriver: Supports Google Chrome.
+GeckoDriver: Supports Mozilla Firefox.
+EdgeDriver: Supports Microsoft Edge.
+SafariDriver: Supports Apple Safari.
+OperaDriver: Supports Opera browser.
+InternetExplorerDriver: Supports Internet Explorer.
+Each driver translates WebDriver commands into browser-specific actions, enabling WebDriver to control the browser.
+
+5. What Are The Steps To Create A Simple Web Driver Script? Explain with code.
+Steps to Create a Simple WebDriver Script:
+Set Up WebDriver: Download the browser-specific driver and set its path.
+Initialize WebDriver: Create an instance of the WebDriver for the browser.
+Open a Web Page: Use WebDriver to navigate to a website.
+Interact with Web Elements: Locate and interact with web elements.
+Execute Actions: Perform actions like clicking buttons, entering text, etc.
+Close the Browser: Quit the browser session.
+Example Code:
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class SimpleWebDriverScript {
+    public static void main(String[] args) {
+        // Step 1: Set the path of the ChromeDriver executable
+        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+
+        // Step 2: Initialize a new ChromeDriver session
+        WebDriver driver = new ChromeDriver();
+
+        try {
+            // Step 3: Open a web page
+            driver.get("https://www.example.com");
+
+            // Step 4: Interact with web elements
+            WebElement exampleLink = driver.findElement(By.linkText("More information..."));
+
+            // Step 5: Execute actions
+            exampleLink.click();
+
+            // Wait for the page to load
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            // Step 6: Close the browser
+            driver.quit();
+        }
+    }
+}
